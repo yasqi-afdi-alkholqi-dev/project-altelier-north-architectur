@@ -1081,3 +1081,88 @@ img {
     transform: none;
   }
 }
+/* Subtle motion accents */
+@keyframes fadeUpSoft {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes badgeDrift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes stampTurn {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(-8deg); }
+}
+
+.hero-copy.is-visible > .eyebrow {
+  animation: fadeUpSoft 650ms cubic-bezier(.2,.7,.2,1) 80ms both;
+}
+
+.hero-copy.is-visible h1 {
+  animation: fadeUpSoft 850ms cubic-bezier(.2,.7,.2,1) 180ms both;
+}
+
+.hero-copy.is-visible .hero-badge {
+  animation: fadeUpSoft 700ms cubic-bezier(.2,.7,.2,1) 360ms both, badgeDrift 6s ease-in-out 1.2s infinite;
+}
+
+.hero-image-wrap.is-visible .hero-image {
+  animation: heroImageSettle 1.5s cubic-bezier(.2,.7,.2,1);
+}
+
+@keyframes heroImageSettle {
+  from { transform: scale(1.055); }
+  to { transform: scale(1); }
+}
+
+.hero-image-wrap.is-visible .image-brand {
+  animation: fadeUpSoft 650ms ease 220ms both;
+}
+
+.hero-image-wrap.is-visible .image-about {
+  animation: fadeUpSoft 750ms cubic-bezier(.2,.7,.2,1) 360ms both;
+}
+
+.hero-image-wrap.is-visible .image-caption {
+  animation: fadeUpSoft 650ms ease 520ms both;
+}
+
+.project-grid > .project:nth-child(1) { transition-delay: 40ms; }
+.project-grid > .project:nth-child(2) { transition-delay: 120ms; }
+.project-grid > .project:nth-child(3) { transition-delay: 200ms; }
+.project-grid > .project:nth-child(4) { transition-delay: 280ms; }
+
+.section-heading.is-visible h2,
+.intro.is-visible h2,
+.approach-copy.is-visible h2,
+.contact.is-visible h2 {
+  animation: fadeUpSoft 800ms cubic-bezier(.2,.7,.2,1) 100ms both;
+}
+
+.principles > div {
+  transition: padding-left 220ms ease, border-color 220ms ease;
+}
+
+.principles > div:hover {
+  padding-left: 7px;
+  border-color: var(--sage);
+}
+
+.contact-stamp {
+  animation: stampTurn 18s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-stamp { animation: none !important; }
+}
